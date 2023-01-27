@@ -14,7 +14,7 @@ resource "aws_vpc_ipam_pool" "ipam_pool" {
 
 resource "aws_vpc_ipam_pool_cidr" "cidr_pool" {
   ipam_pool_id = aws_vpc_ipam_pool.ipam_pool.id
-  cidr = "172.2.0.0/16"
+  cidr         = "172.2.0.0/16"
 }
 
 resource "aws_vpc" "vpc" {
