@@ -5,7 +5,7 @@ resource "aws_instance" "ec2" {
   subnet_id       = aws_subnet.public_subnet.id
   security_groups = [aws_security_group.securityGroup.id]
 
-  user_data = <<-EOF
+  /*user_data = <<-EOF
 #!/bin/bash
 echo "Installing apache2"
 sudo yum update -y
@@ -14,6 +14,7 @@ sudo systemctl start httpd.service
 sudo systemctl enable httpd.service
 echo "apache2 installed"
 EOF
+*/
 
 
   tags = {
