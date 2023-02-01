@@ -3,11 +3,14 @@ sudo yum update -y
 
 #install MariaDB (MySQL), Apache, PHP
 sudo amazon-linux-extras install -y lamp-mariadb10.2-php7.2 php7.2
-sudo yum install -y httpd mariadb-server
+sudo yum install -y httpd mariadb-server unixODBC.x86_64 mysql-connector-odbc
 
 #start apache server
 sudo systemctl start httpd
 sudo systemctl enable httpd
+
+#install ODBC library for python
+pip3 install pyodbc
 
 #grant ec2-user access to add files to Apache
 sudo usermod -a -G apache ec2-user
@@ -28,3 +31,5 @@ wget https://files.phpmyadmin.net/phpMyAdmin/5.2.0/phpMyAdmin-5.2.0-all-language
 mkdir phpMyAdmin && tar -xvzf phpMyAdmin-5.2.0-all-languages.tar.gz  -C phpMyAdmin --strip-components 1
 rm phpMyAdmin-5.2.0-all-languages.tar.gz
 sudo systemctl start mariadb
+
+sudo mysql_secure_installation
