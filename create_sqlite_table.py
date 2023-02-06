@@ -6,15 +6,19 @@ cursor = conn.cursor()
 
 cursor.execute('''CREATE TABLE visits (
     website TEXT,
-    total_visitors INTEGER,
-    button_presses INTEGER
+    total_visitors INTEGER
+);
+'''
+)
+
+cursor.execute('''CREATE TABLE visitors (
+    name TEXT,
+    message TEXT
 );
 '''
 )
 
 conn.commit()
-
-initial_values = [('test.mivancic.com', 0, 0)]
-
-cursor.executemany("INSERT INTO visits VALUES (?,?,?)", initial_values)
+cursor.execute('INSERT INTO visits VALUES ("test.mivancic.com",0)')
+cursor.execute('INSER INTO visitors VALUES ("Matthew Ivancic","first")')
 conn.commit()
